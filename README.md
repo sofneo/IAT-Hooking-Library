@@ -1,6 +1,6 @@
 # IAT-Hooking-Library
 
-Hooking imports through the enumeration of the Import Address Table has been a common method of forcing code execution and a general hooking technique. On the contrary, to my knowlege there have not been any Import Address Table hooking libraries which deploy hooks from one process to another, rather they usually just hook imports within the same context. This method requires a little more skill as you must enumerate the Import Address Table of the other process by copying data from the target process into your own context.
+Hooking imports through the enumeration of the Import Address Table has been a common method of obtaining code execution (without creating remote threads) and a general hooking technique. On the contrary, to my knowlege there have not been any Import Address Table hooking libraries which deploy hooks from one process to another, rather they usually just hook imports within the same context. This method requires a little more skill as you must enumerate the Import Address Table of the other process by copying data from the target process into your own context.
 
 # Proof Of Concept
 The worked example of this project (in main.cpp) deploys a trampoline inside of notepad.exe, swapping an import called MoveWindow for a custom trampoline. The trampoline then calls notepad.exe!MessageBoxW with NULL for all of the arguments and then returns the original call of notepad.exe!MoveWindow. 
