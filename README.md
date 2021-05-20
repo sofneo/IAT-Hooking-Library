@@ -11,7 +11,7 @@ Here you can see the MessageBoxW being called with Error as lpText title because
 # The Possibilities Of IAT Hooking
 IAT Hooking allows you to obtain code execution. It may be easy to deploy your data into another process or context however it is often not so easy to start the initial execution of your code. In often times where CreateRemoteThread() cannot be used to start a remote thread, code execution must be obtained by other means. 
 
-One of the uses I'm sure someone will put this project to will be a Dynamic Link Library Manual Mapper. The same concept could be applied to one's DllMain, in the sense that you would hook an import which is often called by the game or program you are trying to deploy your module in to (such as PeekMessageW or PeekMessageA) and swap the pointer of the import for your trampoline which would call your DllMain (or you could swap the pointer of the import directly for DllMain assuming DllMain accepted the same arguments as the import. 
+One of the uses I'm sure someone will put this project to will be a Dynamic Link Library Manual Mapper. The same concept could be applied to one's DllMain, in the sense that you would hook an import which is often called by the game or program you are trying to deploy your module in to (such as PeekMessageW or PeekMessageA) and swap the pointer of the import for your trampoline which would call your DllMain (or you could swap the pointer of the import directly for DllMain assuming DllMain accepted the same arguments as the import). 
 
 IAT Hooking allows for reverse engineers to deploy hooks on imports and change data at runtime. One may hook an import and change the arguments at runtime, for example hooking MessageBoxA and changing lpText to your own custom string. 
 
@@ -21,7 +21,7 @@ Example of this assembler's usage:
 A typical inline hook will include an instruction set similar to:
 ```
 mov rax, 0xDEADBEEF;
-jmp rax
+jmp rax;
 ```
 The programmer would then convert this instruction set into shellcode, a byte array works usually. This translates into: 
 ```
